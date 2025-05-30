@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body style="background-color: rgb(9, 64, 172)">
+
+   <!-- <div class = "container">
+    <header>
+        <h1>Smart Calculator</h1>
+    </header>
+
+    <div class="calculator">
+        <input type="text" id="display" disabled>
+        <div class="buttons">
+            <button onclick=" playsound('button.mp3'); clearDisplay()">AC</button>
+            <button onclick="playsound('button.mp3');appendValue('(')">(</button>
+            <button onclick="playsound('button.mp3');appendValue(')')">)</button>
+            <button onclick="playsound('button.mp3');appendValue('%')">%</button>
+            <button onclick="playsound('says-7.mp3');appendValue('7')">7</button>
+            <button onclick="playsound('says-8.mp3');appendValue('8')">8</button>
+            <button onclick="playsound('says-9.mp3');appendValue('9')">9</button>
+            <button onclick="playsound('button.mp3');appendValue('/')">/</button>
+            <button onclick="playsound('says-4.mp3');appendValue('4')">4</button>
+            <button onclick="playsound('says-5.mp3');appendValue('5')">5</button>
+            <button onclick="playsound('says-6.mp3');appendValue('6')">6</button>
+            <button onclick="playsound('button.mp3');appendValue('*')">*</button>
+            <button onclick="playsound('says-1.mp3');appendValue('1')">1</button>
+            <button onclick="playsound('says-2.mp3');appendValue('2')">2</button>
+            <button onclick="playsound('says-3.mp3');appendValue('3')">3</button>
+            <button onclick="playsound('button.mp3');appendValue('-')">-</button>
+            <button onclick="playsound('says-0.mp3');appendValue('0')">0</button>
+            <button onclick="playsound('button.mp3');appendValue('.')">.</button>
+            <button onclick="playsound('button.mp3');appendValue('+')">+</button>
+            <button onclick="playsound('button.mp3');deleteLast()">⌫</button>
+            <button onclick="playsound('button.mp3');calculate()" class="equal">=</button>
+            <button class="toggle-scientific" onclick="playsound('button.mp3');toggleScientific()">Scientific Mode</button>
+        </div>
+        <br>
+       
+        <div class="buttons scientific" style="display: none;" >
+            <button onclick="playsound('button.mp3');appendFunction('sin(')">sin</button>
+            <button onclick="playsound('button.mp3');appendFunction('cos(')">cos</button>
+            <button onclick="playsound('button.mp3');appendFunction('tan(')">tan</button>
+            <button onclick="playsound('button.mp3');appendFunction('log(')">log</button>
+            <button onclick="playsound('button.mp3');appendFunction('ln(')">ln</button>
+            <button onclick="playsound('button.mp3');appendFunction('exp(')">e^x</button>
+            <button onclick="playsound('button.mp3');appendValue('^')">^</button>
+            <button onclick="playsound('button.mp3');appendFunction('sqrt(')">√</button>
+        </div>
+    </div>
+   </div> -->
+
+
+   <div class="main-container">
+    <h1 class="title">Smart Calculator</h1>
+    <div class="calculator-container">
+        <div class="calculator">
+            <input type="text" id="display" disabled>
+            <div class="buttons">
+                <button onclick="playsound('button.mp3'); clearDisplay()">AC</button>
+                <button onclick="playsound('button.mp3');appendValue('(')">(</button>
+                <button onclick="playsound('button.mp3');appendValue(')')">)</button>
+                <button onclick="playsound('button.mp3');appendValue('%')">%</button>
+                <button onclick="playsound('says-7.mp3');appendValue('7')">7</button>
+                <button onclick="playsound('says-8.mp3');appendValue('8')">8</button>
+                <button onclick="playsound('says-9.mp3');appendValue('9')">9</button>
+                <button onclick="playsound('button.mp3');appendValue('/')">/</button>
+                <button onclick="playsound('says-4.mp3');appendValue('4')">4</button>
+                <button onclick="playsound('says-5.mp3');appendValue('5')">5</button>
+                <button onclick="playsound('says-6.mp3');appendValue('6')">6</button>
+                <button onclick="playsound('button.mp3');appendValue('*')">*</button>
+                <button onclick="playsound('says-1.mp3');appendValue('1')">1</button>
+                <button onclick="playsound('says-2.mp3');appendValue('2')">2</button>
+                <button onclick="playsound('says-3.mp3');appendValue('3')">3</button>
+                <button onclick="playsound('button.mp3');appendValue('-')">-</button>
+                <button onclick="playsound('says-0.mp3');appendValue('0')">0</button>
+                <button onclick="playsound('button.mp3');appendValue('.')">.</button>
+                <button onclick="playsound('button.mp3');appendValue('+')">+</button>
+                <button onclick="playsound('button.mp3');deleteLast()">⌫</button>
+                <button onclick="playsound('button.mp3');calculate()" class="equal">=</button>
+                <button class="toggle-scientific" onclick="playsound('button.mp3');toggleScientific()">Scientific Mode</button>
+            </div>
+            <br>
+            <div class="buttons scientific" style="display: none;">
+                <button onclick="playsound('button.mp3');appendFunction('sin(')">sin</button>
+                <button onclick="playsound('button.mp3');appendFunction('cos(')">cos</button>
+                <button onclick="playsound('button.mp3');appendFunction('tan(')">tan</button>
+                <button onclick="playsound('button.mp3');appendFunction('log(')">log</button>
+                <button onclick="playsound('button.mp3');appendFunction('ln(')">ln</button>
+                <button onclick="playsound('button.mp3');appendFunction('exp(')">e^x</button>
+                <button onclick="playsound('button.mp3');appendValue('^')">^</button>
+                <button onclick="playsound('button.mp3');appendFunction('sqrt(')">√</button>
+            </div>
+        </div>
+    </div>
+</div>
+    <script>
+        let isResultDisplayed = false;
+
+    function appendValue(value) {
+    let display = document.getElementById('display');
+        if (isResultDisplayed) {
+            display.value = value; // Start new calculation
+            isResultDisplayed = false;
+        } else {
+            display.value += value;
+    }
+}
+
+function appendFunction(func) {
+    let display = document.getElementById('display');
+    if (isResultDisplayed) {
+        display.value = func; // Start new calculation with function
+        isResultDisplayed = false;
+    } else {
+        display.value += func;
+    }
+}
+
+function calculate() {
+    try {
+        let expression = document.getElementById('display').value;
+
+        // Convert degrees to radians for trigonometric functions
+        expression = expression.replace(/sin\(([^)]+)\)/g, '(Math.sin($1 * Math.PI / 180).toFixed(10))');
+        expression = expression.replace(/cos\(([^)]+)\)/g, '(Math.cos($1 * Math.PI / 180).toFixed(10))');
+        expression = expression.replace(/tan\(([^)]+)\)/g, '(Math.tan($1 * Math.PI / 180).toFixed(10))');
+
+        // Handle logarithms and square roots
+        expression = expression.replace(/log\(([^)]+)\)/g, 'Math.log10($1)');
+        expression = expression.replace(/ln\(([^)]+)\)/g, 'Math.log($1)');
+        expression = expression.replace(/exp\(([^)]+)\)/g, 'Math.exp($1)');
+        expression = expression.replace(/sqrt\(([^)]+)\)/g, 'Math.sqrt($1)');
+
+        // Fix exponentiation (**) issue
+        expression = expression.replace(/(\d+)\^(\d+)/g, 'Math.pow($1, $2)');
+
+        // Evaluate the final expression
+        document.getElementById('display').value = eval(expression);
+        isResultDisplayed = true; // Set flag to indicate result is shown
+    } catch (error) {
+        document.getElementById('display').value = 'Error';
+        isResultDisplayed = true;
+    }
+}
+
+function clearDisplay() {
+    document.getElementById('display').value = '';
+    isResultDisplayed = false;
+}
+
+function deleteLast() {
+    let value = document.getElementById('display').value;
+    document.getElementById('display').value = value.slice(0, -1);
+}
+
+function toggleScientific() {
+    let sciButtons = document.querySelector('.scientific');
+    sciButtons.style.display = (sciButtons.style.display === 'none' || sciButtons.style.display === '') ? 'grid' : 'none';
+}
+
+function playsound(soundfile) {
+    let sound = new Audio(soundfile);
+    sound.currentTime = 0;
+    sound.play();
+}
+
+</script>
+
+</body>
+</html>
